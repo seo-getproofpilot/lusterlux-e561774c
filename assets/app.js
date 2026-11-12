@@ -43,14 +43,17 @@ document.documentElement.classList.add('js');
   const onScroll = () => nav.classList.toggle('fixed', scrollY > 120);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  /* hero: play once after the neon strike, hold on the last frame, offer a replay */
-  const v = $('#hv'), replay = $('#replay');
+  /* hero: Chase's real clip loops muted after the neon strike; the button turns his audio on */
+  const v = $('#hv'), snd = $('#snd');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (v) {
     if (matchMedia('(max-width:900px)').matches) v.poster = 'assets/hero/poster-m.jpg';
-    v.addEventListener('ended', () => replay.classList.add('on'));
-    replay.addEventListener('click', () => { replay.classList.remove('on'); v.currentTime = 0; v.play(); });
-    if (!reduce) setTimeout(() => v.play().catch(() => replay.classList.add('on')), 350);
-    else replay.classList.add('on');
+    if (!reduce) setTimeout(() => v.play().catch(() => {}), 350);
+    snd.addEventListener('click', () => {
+      v.muted = !v.muted;
+      snd.setAttribute('aria-pressed', String(!v.muted));
+      snd.querySelector('span').textContent = v.muted ? 'Hear Chase' : 'Mute';
+      if (!v.muted) { v.currentTime = 0; v.play(); }
+    });
   }
 })();

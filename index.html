@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site.css?v=2" />
-<link rel="preload" as="image" href="assets/hero/poster-d.jpg" media="(min-width:901px)" />
+<link rel="stylesheet" href="assets/site.css?v=4" />
+<link rel="preload" as="image" href="assets/hero/poster-d.jpg?v=2" media="(min-width:901px)" />
 <script>document.documentElement.classList.add('js')</script>
 <script type="importmap">{"imports":{"three":"./assets/vendor/three.module.js"}}</script>
 </head>
@@ -33,13 +33,14 @@
 <!-- HERO: the founders, the neon, the bottles. Plays once, holds on the last frame. -->
 <header class="hero" id="top">
   <div class="hero-media">
-    <video id="hv" muted playsinline preload="auto" poster="assets/hero/poster-d.jpg" aria-label="LusterLux founders Brandon and Chase holding LuxPro and CeramicX under the LusterLux neon sign">
-      <source src="assets/hero/hero-m.mp4" type="video/mp4" media="(max-width:900px)" />
-      <source src="assets/hero/hero-d.mp4" type="video/mp4" />
+    <video id="hv" muted loop playsinline preload="auto" poster="assets/hero/poster-d.jpg?v=2" aria-label="LusterLux co-founder Chase Hayes showing off a bottle of LuxPro under the LusterLux neon sign">
+      <source src="assets/hero/hero-m.mp4?v=2" type="video/mp4" media="(max-width:900px)" />
+      <source src="assets/hero/hero-d.mp4?v=2" type="video/mp4" />
     </video>
+    <button class="replay on" id="snd" type="button" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10L5 10H2z"/><path class="w" d="M11 5.5a3.5 3.5 0 0 1 0 5M12.6 3.8a6 6 0 0 1 0 8.4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Hear Chase</span></button>
   </div>
   <div class="hero-copy">
-    <p class="kick"><i></i>Founded by Brandon &amp; Chase · Arizona</p>
+    <p class="kick"><i></i>Founded by Chase &amp; Brandon · Arizona</p>
     <h1>Made by detailers. <em>Built to shine.</em></h1>
     <p class="lede">Two founders who started at 18, four years of washing a rental fleet every day, and a line of formulas built from what actually worked.</p>
     <div class="ctas">
@@ -47,7 +48,6 @@
       <a class="btn ghost" href="#formula">See the formula</a>
     </div>
   </div>
-  <button class="replay" id="replay" type="button" aria-label="Replay the video"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3a5 5 0 1 1-4.6 3H1.2l3-3.4L7.3 6H5.6A3.5 3.5 0 1 0 8 4.5V3Z"/></svg>Replay</button>
   <a class="cue" href="#formula" aria-label="Scroll to the formula"><span>Scroll</span><i></i></a>
 </header>
 
@@ -93,10 +93,10 @@
 <footer class="foot">
   <img src="assets/img/brand/badge.webp" alt="" width="64" height="64" />
   <p>5.00★ from 20 reviews · Free shipping on $35+ · 30-day money-back guarantee</p>
-  <p class="note">A ProofPilot concept for LusterLux. Products, prices and photography are LusterLux's. The hero is AI-generated from the founders' own photos and is not real footage.</p>
+  <p class="note">A ProofPilot concept for LusterLux. Products, prices and photography are LusterLux's. The hero is real LusterLux footage of co-founder Chase Hayes (from @lusterluxcarcare), cut out and placed in front of a generated neon wall.</p>
 </footer>
 
-<script src="assets/app.js?v=2" defer></script>
+<script src="assets/app.js?v=4" defer></script>
 <script type="module" src="assets/bottle.js?v=1"></script>
 </body>
 </html>
