@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="robots" content="noindex" />
+<title>LusterLux Detailing Products</title>
+<meta name="description" content="Detailing products built by two Arizona detailers. Waterless wash, ceramic spray, wheel, tire and interior care." />
+<link rel="icon" href="assets/img/brand/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css?v=2" />
+<link rel="preload" as="image" href="assets/hero/poster-d.jpg" media="(min-width:901px)" />
+<script>document.documentElement.classList.add('js')</script>
+<script type="importmap">{"imports":{"three":"./assets/vendor/three.module.js"}}</script>
+</head>
+<body>
+
+<p class="bar"><span>Free shipping on orders $35+</span><i></i><span>30-day money-back guarantee</span><i class="x"></i><span class="x">Made in the USA</span></p>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#top"><img src="assets/img/brand/badge.webp" alt="LusterLux Detailing Products" width="52" height="52" /></a>
+  <ul>
+    <li><a href="#line">Shop</a></li>
+    <li><a href="https://lusterluxauto.com/collections/all">Kits</a></li>
+    <li><a href="#formula">The formula</a></li>
+    <li><a href="https://lusterluxauto.com/pages/about">Our story</a></li>
+  </ul>
+  <a class="cart" href="https://lusterluxauto.com/cart">Cart</a>
+</nav>
+
+<!-- HERO: the founders, the neon, the bottles. Plays once, holds on the last frame. -->
+<header class="hero" id="top">
+  <div class="hero-media">
+    <video id="hv" muted playsinline preload="auto" poster="assets/hero/poster-d.jpg" aria-label="LusterLux founders Brandon and Chase holding LuxPro and CeramicX under the LusterLux neon sign">
+      <source src="assets/hero/hero-m.mp4" type="video/mp4" media="(max-width:900px)" />
+      <source src="assets/hero/hero-d.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero-copy">
+    <p class="kick"><i></i>Founded by Brandon &amp; Chase · Arizona</p>
+    <h1>Made by detailers. <em>Built to shine.</em></h1>
+    <p class="lede">Two founders who started at 18, four years of washing a rental fleet every day, and a line of formulas built from what actually worked.</p>
+    <div class="ctas">
+      <a class="btn solid" href="#line">Shop the line</a>
+      <a class="btn ghost" href="#formula">See the formula</a>
+    </div>
+  </div>
+  <button class="replay" id="replay" type="button" aria-label="Replay the video"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3a5 5 0 1 1-4.6 3H1.2l3-3.4L7.3 6H5.6A3.5 3.5 0 1 0 8 4.5V3Z"/></svg>Replay</button>
+  <a class="cue" href="#formula" aria-label="Scroll to the formula"><span>Scroll</span><i></i></a>
+</header>
+
+<!-- THE FORMULA: molecules condense into the liquid, the bottle draws itself, the cap spins on -->
+<section class="formula" id="formula">
+  <canvas id="gl" aria-label="A LusterLux bottle forming from its formula, then turning under studio light"></canvas>
+  <div class="f-copy">
+    <p class="kick st"><i></i>The formula</p>
+    <h2 class="st d1">One bottle. <em>Every surface.</em></h2>
+    <div class="prod st d2">
+      <p class="nm" id="pnm">LUX<span>PRO</span></p>
+      <p class="fn" id="pfn">Waterless wash &amp; surface protectant</p>
+      <p class="tx" id="ptx">Nano-polymers wrap the dust so it lifts off the paint instead of dragging across it. No bucket, no hose, no driveway.</p>
+      <div class="ctas">
+        <a class="btn solid" id="padd" href="https://lusterluxauto.com/cart/59846340902993:1">Add to cart <b id="ppr">$19.99</b></a>
+      </div>
+    </div>
+  </div>
+  <div class="co" id="co0"><b></b><i></i><span></span></div>
+  <div class="co" id="co1"><b></b><i></i><span></span></div>
+  <div class="co" id="co2"><b></b><i></i><span></span></div>
+  <div class="picker st d3" id="picker" role="group" aria-label="Choose a product"></div>
+</section>
+
+<!-- THE LINE -->
+<section class="line" id="line">
+  <div class="line-head">
+    <p class="kick"><i></i>The line</p>
+    <h2>Every formula, <em>in the order you use it.</em></h2>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Filter products">
+      <button type="button" role="tab" aria-selected="true" data-f="all">All</button>
+      <button type="button" role="tab" aria-selected="false" data-f="wash">Wash</button>
+      <button type="button" role="tab" aria-selected="false" data-f="paint">Paint</button>
+      <button type="button" role="tab" aria-selected="false" data-f="wheel">Wheels &amp; tires</button>
+      <button type="button" role="tab" aria-selected="false" data-f="int">Interior</button>
+      <button type="button" role="tab" aria-selected="false" data-f="golf">Golf cart</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="line-foot"><a class="btn ghost" href="https://lusterluxauto.com/collections/all">Shop kits &amp; tools</a></p>
+</section>
+
+<footer class="foot">
+  <img src="assets/img/brand/badge.webp" alt="" width="64" height="64" />
+  <p>5.00★ from 20 reviews · Free shipping on $35+ · 30-day money-back guarantee</p>
+  <p class="note">A ProofPilot concept for LusterLux. Products, prices and photography are LusterLux's. The hero is AI-generated from the founders' own photos and is not real footage.</p>
+</footer>
+
+<script src="assets/app.js?v=2" defer></script>
+<script type="module" src="assets/bottle.js?v=1"></script>
+</body>
+</html>
