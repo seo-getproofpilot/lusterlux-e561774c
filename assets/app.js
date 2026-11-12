@@ -43,17 +43,43 @@ document.documentElement.classList.add('js');
   const onScroll = () => nav.classList.toggle('fixed', scrollY > 120);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  /* hero: Chase's real clip loops muted after the neon strike; the button turns his audio on */
-  const v = $('#hv'), snd = $('#snd');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (v) {
-    if (matchMedia('(max-width:900px)').matches) v.poster = 'assets/hero/poster-m.jpg';
-    if (!reduce) setTimeout(() => v.play().catch(() => {}), 350);
-    snd.addEventListener('click', () => {
-      v.muted = !v.muted;
-      snd.setAttribute('aria-pressed', String(!v.muted));
-      snd.querySelector('span').textContent = v.muted ? 'Hear Chase' : 'Mute';
-      if (!v.muted) { v.currentTime = 0; v.play(); }
-    });
+  /* hero wall: their own clips and photos, in three columns drifting under the neon.
+     Product tags come from the captions on their own posts. */
+  const T = {
+    foam:    { v: 'foam',  tag: 'LuxFoam',       sub: 'Foam wash' },
+    chase:   { v: 'chase', tag: 'LuxPro',        sub: 'Co-founder Chase' },
+    shop:    { v: 'shop',  tag: 'LuxPro',        sub: 'In the shop' },
+    wheel:   { v: 'wheel', tag: 'WheelAssassin', sub: 'Wheel cleaner' },
+    tire:    { v: 'tire',  tag: 'WheelAssassin', sub: 'Foamed & scrubbed' },
+    meet:    { v: 'meet',  tag: 'Pop-up meet',   sub: 'Arizona', wide: 1 },
+    lambo:   { p: 'p-lambo',    tag: 'LuxPro',    sub: 'Pro surface protectant' },
+    inter:   { p: 'p-interior', tag: 'InteriorX', sub: 'Interior cleaner' },
+    tirep:   { p: 'p-tire',     tag: 'TireVenom', sub: 'Tire dressing' },
+  };
+  const COLS = [['foam', 'lambo', 'meet'], ['chase', 'wheel', 'tirep'], ['shop', 'tire', 'inter']];
+  const tile = k => {
+    const t = T[k];
+    const media = t.v
+      ? `<video muted loop playsinline preload="metadata" poster="assets/wall/${t.v}.jpg" data-src="assets/wall/${t.v}.mp4"></video>`
+      : `<img src="assets/wall/${t.p}.webp" alt="" loading="lazy" decoding="async" />`;
+    return `<figure class="tile${t.wide ? ' wide' : ''}${t.p ? ' photo' : ''}">${media}<figcaption><b>${t.tag}</b>${t.sub}</figcaption></figure>`;
+  };
+  const wall = $('#wall');
+  if (wall) {
+    // each column holds its tiles twice so the drift loops seamlessly
+    if (matchMedia('(max-width:900px)').matches) {
+      // phones: one strip with every tile, twice, sliding sideways
+      const all = ['chase', 'foam', 'lambo', 'wheel', 'meet', 'shop', 'tirep', 'tire', 'inter'];
+      wall.innerHTML = `<div class="strip">${all.map(tile).join('')}${all.map(tile).join('')}</div>`;
+    } else {
+      wall.innerHTML = COLS.map((c, i) => `<div class="col c${i}"><div class="track">${c.map(tile).join('')}${c.map(tile).join('')}</div></div>`).join('');
+    }
+    const vids = [...wall.querySelectorAll('video')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const load = () => vids.forEach(v => { if (!v.src) v.src = v.dataset.src; });
+    const run = on => vids.forEach(v => on && !reduce ? v.play().catch(() => {}) : v.pause());
+    // start after the neon strikes; pause everything when the hero is off screen
+    setTimeout(() => { load(); run(true); }, 600);
+    new IntersectionObserver(es => es.forEach(e => run(e.isIntersecting)), { threshold: .05 }).observe(wall);
   }
 })();
